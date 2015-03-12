@@ -1,12 +1,12 @@
 
 package kthselectionproblem;
 
-import java.util.Random;
+import java.util.Scanner;
 
 
 public class KthSelectionProblem {
     
-    public int getK (int[] dizi){
+    public int getK (int[] dizi,int kacinci){
         
         int gecici;
         int ek;
@@ -22,53 +22,34 @@ public class KthSelectionProblem {
         
         }
         
-        deger = dizi[4];
+        deger = dizi[kacinci-1];
         return deger;
     }
     
-    public int getK1(int[] dizi, int kacinci){
-        int a;
-        int b;
-        int c;
-        
-        for(int i=0; i<kacinci; i++){
-            b=i;
-            for(int j=i; j<kacinci;j++){
-                if(dizi[j]<dizi[b]) b=j;
-            }
-            a=dizi[i];
-            dizi[i]=dizi[b];
-            dizi[b]=a;
-        }
-        
-        for(int k=5; k<15;k++){
-            if(dizi[kacinci-1]>dizi[k]){
-                /*
-                Burayı daha tamamlayamadım dizi kontrolu yapmam lazım
-                
-                
-                */
-            }
-        }   
-            
-        return 1;
-    }
-    
-
     public static void main(String[] args) {
        
-        System.out.println("k. elemanı bulan sıralama algoritması");
-        System.out.println("5. elemanı:");
-       int sonuc;
-     
-        Random rnd = new Random();
-        int dizi[]= new int[15];
-        for(int i=0 ; i<15 ;i++){
-            dizi[i]=rnd.nextInt(50);
+        System.out.println("*****k. elemanı bulan sıralama algoritması****");
+        
+        System.out.println("Kacinci elemanı bulmak istersiniz:");
+        Scanner scanDeger = new Scanner(System.in);
+        int deger = scanDeger.nextInt();
+        
+        System.out.println("Dizinin eleman sayisini giriniz:");
+        Scanner scan = new Scanner(System.in);
+        int sayi=scan.nextInt();
+        int cikti;
+        int dizi[] = new int[sayi];
+        
+        
+        for(int i=0;i<sayi;i++){
+            System.out.print("dizinin("+(i+1)+") giriniz :");
+            dizi[i] =scan.nextInt();
         }
+        
+
         KthSelectionProblem k = new KthSelectionProblem();
-        sonuc=k.getK(dizi);
-        System.out.println(sonuc);
+        cikti=k.getK(dizi,deger);
+        System.out.println(cikti);
         
         for(int j=0;j<dizi.length;j++){
 
